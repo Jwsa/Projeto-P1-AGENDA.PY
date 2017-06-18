@@ -222,6 +222,7 @@ def organizar(linhas):
       if dataValida(x):
         data = x
         tokens.remove(x)
+        
 
     for x in tokens:
       if horaValida(x):
@@ -532,24 +533,26 @@ def processarComandos(comandos) :
     adicionar(itemParaAdicionar[0], itemParaAdicionar[1]) # novos itens não têm prioridade
 
   elif comandos[1] == LISTAR:
-    
-    return listar()
+    listar()
+    return 
     
 
   elif comandos[1] == REMOVER:
-    
-    return remover(comandos[2])    
+    remover(comandos[2])  
+    return   
 
        
 
   elif comandos[1] == FAZER:
+    fazer(comandos[2])
     
-    return fazer(comandos[2])   
+    return    
 
     #########
 
   elif comandos[1] == PRIORIZAR:
-    return priorizar(comandos[2],comandos[3])
+    priorizar(comandos[2],comandos[3])
+    return 
 
     ########
 
