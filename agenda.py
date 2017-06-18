@@ -192,7 +192,14 @@ def soLetras(letra):
 #
 # Todos os itens menos DESC são opcionais. Se qualquer um deles estiver fora do formato, por exemplo,
 # data que não tem todos os componentes ou prioridade com mais de um caractere (além dos parênteses),
-# tudo que vier depois será considerado parte da descrição.  
+# tudo que vier depois será considerado parte da descrição.
+lista = []
+f = open("todo.txt","r")
+for x in f:
+  lista.append(x)
+f.close()
+
+
 def organizar(linhas):
   itens = []
   
@@ -217,7 +224,16 @@ def organizar(linhas):
     # corresponde à descrição. É só transformar a lista de tokens em um string e
     # construir a tupla com as informações disponíveis.
     
+    if horaValida(tokens[0]):  # esse é o caso se so existir hora 
+      hora = tokens[0]
+      tokens.remove(tokens[0])
 
+    elif (dataValida(tokens[0])== False) and horaValida(tokens[1]):
+      desc += tokens[0] + " " + tokens[1] + " "
+      tokens.remove(tokens[0])
+      tokens.remove(tokens[0])
+      
+      
     for x in tokens:
       if dataValida(x):
         data = x
